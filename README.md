@@ -1,5 +1,5 @@
- <H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+ <H3>ENTER YOUR NAME : SWETHA S</H3>
+<H3>ENTER YOUR REGISTER NO : 212222230155</H3>
 <H3>EX. NO.8</H3>
 <H3>DATE:</H3>
 <H1 ALIGN =CENTER>Implementation of Speech Recognition</H1>
@@ -22,9 +22,31 @@ Step 11: Perform speech recognition with exceptional handling:<Br>
 •	A generic exception block captures any other unexpected errors.<Br>
 <H3>Program:</H3>
 
-Insert your code her
+```
+import SpeechRecognition as sr
+def record_audio():
+    r=sr.Recognizer()
+    r.energy_threshold = 6000
+    voicedata=''
+    try:
+        with sr.Microphone() as source:
+            audio=r.listen(source)
+            voicedata=r.recognize_google(audio,language='en-US')            
+    except sr.UnknownValueError:
+        print("Unable to Recognize Audio")
+    except sr.RequestError:
+        print("Unable to find the Resource")
+    return voicedata
+while True:
+	print(record_audio())
+	close=['stop','close','exit']
+	if record_audio() in close:
+		break
+```
 
 <H3> Output:</H3>
-Show the results here
+
+<img width="259" height="127" alt="image" src="https://github.com/user-attachments/assets/17547a9f-c7b6-4d40-90c2-16a3cf9ba9b7" />
 
 <H3> Result:</H3>
+Thus, The implementation of speech recognition is executed successfully.
